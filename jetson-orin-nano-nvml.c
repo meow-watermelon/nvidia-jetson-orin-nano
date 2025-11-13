@@ -84,9 +84,6 @@ static void get_device_arch_name(nvmlDeviceArchitecture_t device_arch, char *dev
         case NVML_DEVICE_ARCH_BLACKWELL:
             strncpy(device_arch_name, "Blackwell", strlen("Blackwell") + 1);
             break;
-        case NVML_DEVICE_ARCH_T23X:
-            strncpy(device_arch_name, "Orin", strlen("Orin") + 1);
-            break;
         case NVML_DEVICE_ARCH_UNKNOWN:
             strncpy(device_arch_name, "UNKNOWN", strlen("UNKNOWN") + 1);
             break;
