@@ -90,6 +90,19 @@ static void get_device_arch_name(nvmlDeviceArchitecture_t device_arch, char *dev
     }
 }
 
+static int get_device_compute_cap(nvmlDevice_t device_handle, int *major, int *minor) {
+    nvmlReturn_t result;
+
+    result = nvmlDeviceGetCudaComputeCapability(device_handle, major, minor);
+    if (result != NVML_SUCCESS) {
+        fprintf(stderr, "ERROR: failed to get device compute capability: %s\n", nvmlErrorString(result));
+
+        return -1;
+    }
+
+    return 1;
+}
+
 int main(void) {
     nvmlReturn_t result;
     unsigned int device_count;
@@ -120,6 +133,9 @@ int main(void) {
         nvmlDeviceArchitecture_t device_arch;
         char device_arch_name[BUFSIZ];
 
+        int major;
+        int minor;
+
         // query for device handle
         result = nvmlDeviceGetHandleByIndex(i, &device);
         if (result != NVML_SUCCESS) {
@@ -145,8 +161,14 @@ int main(void) {
             get_device_arch_name(device_arch, device_arch_name);
         }
 
+        // get device compute capability
+        if (get_device_compute_cap(device, &major, &minor) < 0) {
+            major = 0;
+            minor = 0;
+        }
+
         // print final output
-        fprintf(stdout, "GPU [%s] [%u: %s] UUID: %s\n", device_arch_name, i, device_name, device_uuid);
+        fprintf(stdout, "GPU [%s] [%u: %s] UUID: %s Compute Capability: [%i.%i]\n", device_arch_name, i, device_name, device_uuid, major, minor);
     }
 
     // shutdown NVML library
