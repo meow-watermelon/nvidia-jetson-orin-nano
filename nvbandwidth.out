@@ -1,0 +1,188 @@
+ericlee@nvidia-dev:~/Projects/git/nvbandwidth$ cmake .
+-- The CUDA compiler identification is NVIDIA 12.6.68
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/cuda/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: program_options 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ericlee/Projects/git/nvbandwidth
+ericlee@nvidia-dev:~/Projects/git/nvbandwidth$ make
+[  8%] Building CXX object CMakeFiles/nvbandwidth.dir/testcase.cpp.o
+[ 16%] Building CXX object CMakeFiles/nvbandwidth.dir/testcases_ce.cpp.o
+[ 25%] Building CXX object CMakeFiles/nvbandwidth.dir/testcases_sm.cpp.o
+[ 33%] Building CUDA object CMakeFiles/nvbandwidth.dir/kernels.cu.o
+[ 41%] Building CXX object CMakeFiles/nvbandwidth.dir/memcpy.cpp.o
+[ 50%] Building CXX object CMakeFiles/nvbandwidth.dir/nvbandwidth.cpp.o
+[ 58%] Building CXX object CMakeFiles/nvbandwidth.dir/multinode_memcpy.cpp.o
+[ 66%] Building CXX object CMakeFiles/nvbandwidth.dir/multinode_testcases.cpp.o
+[ 75%] Building CXX object CMakeFiles/nvbandwidth.dir/output.cpp.o
+[ 83%] Building CXX object CMakeFiles/nvbandwidth.dir/json_output.cpp.o
+[ 91%] Building CXX object CMakeFiles/nvbandwidth.dir/json/jsoncpp.cpp.o
+[100%] Linking CXX executable nvbandwidth
+[100%] Built target nvbandwidth
+ericlee@nvidia-dev:~/Projects/git/nvbandwidth$ ./nvbandwidth -d
+nvbandwidth Version: v0.8
+Built from Git version: v0.8
+
+CUDA Runtime Version: 12060
+CUDA Driver Version: 12060
+Driver Version: 540.4.0
+
+nvidia-dev
+Device 0: Orin (00000000:00:00)
+
+Running host_to_device_memcpy_ce.
+memcpy CE CPU(row) -> GPU(column) bandwidth (GB/s)
+           0
+ 0     17.33
+
+SUM host_to_device_memcpy_ce 17.33
+
+Running device_to_host_memcpy_ce.
+memcpy CE CPU(row) <- GPU(column) bandwidth (GB/s)
+           0
+ 0     17.34
+
+SUM device_to_host_memcpy_ce 17.34
+
+Running host_to_device_bidirectional_memcpy_ce.
+memcpy CE CPU(row) <-> GPU(column) bandwidth (GB/s)
+           0
+ 0     11.51
+
+SUM host_to_device_bidirectional_memcpy_ce 11.51
+
+Running device_to_host_bidirectional_memcpy_ce.
+memcpy CE CPU(row) <-> GPU(column) bandwidth (GB/s)
+           0
+ 0     15.25
+
+SUM device_to_host_bidirectional_memcpy_ce 15.25
+
+Waived: 
+Waived: 
+Waived: 
+Waived: 
+Running all_to_host_memcpy_ce.
+memcpy CE CPU(row) <- GPU(column) bandwidth (GB/s)
+           0
+ 0     17.34
+
+SUM all_to_host_memcpy_ce 17.34
+
+Running all_to_host_bidirectional_memcpy_ce.
+memcpy CE CPU(row) <-> GPU(column) bandwidth (GB/s)
+           0
+ 0     15.25
+
+SUM all_to_host_bidirectional_memcpy_ce 15.25
+
+Running host_to_all_memcpy_ce.
+memcpy CE CPU(row) -> GPU(column) bandwidth (GB/s)
+           0
+ 0     17.34
+
+SUM host_to_all_memcpy_ce 17.34
+
+Running host_to_all_bidirectional_memcpy_ce.
+memcpy CE CPU(row) <-> GPU(column) bandwidth (GB/s)
+           0
+ 0     11.52
+
+SUM host_to_all_bidirectional_memcpy_ce 11.52
+
+Waived: 
+Waived: 
+Waived: 
+Waived: 
+Running host_to_device_memcpy_sm.
+memcpy SM CPU(row) -> GPU(column) bandwidth (GB/s)
+           0
+ 0     24.43
+
+SUM host_to_device_memcpy_sm 24.43
+
+Running device_to_host_memcpy_sm.
+memcpy SM CPU(row) <- GPU(column) bandwidth (GB/s)
+           0
+ 0     30.94
+
+SUM device_to_host_memcpy_sm 30.94
+
+Running host_to_device_bidirectional_memcpy_sm.
+memcpy SM CPU(row) <-> GPU(column) bandwidth (GB/s)
+           0
+ 0     19.13
+
+SUM host_to_device_bidirectional_memcpy_sm 19.13
+
+Running device_to_host_bidirectional_memcpy_sm.
+memcpy SM CPU(row) <-> GPU(column) bandwidth (GB/s)
+           0
+ 0     19.13
+
+SUM device_to_host_bidirectional_memcpy_sm 19.13
+
+Waived: 
+Waived: 
+Waived: 
+Waived: 
+Running all_to_host_memcpy_sm.
+memcpy SM CPU(row) <- GPU(column) bandwidth (GB/s)
+           0
+ 0     30.93
+
+SUM all_to_host_memcpy_sm 30.93
+
+Running all_to_host_bidirectional_memcpy_sm.
+memcpy SM CPU(row) <-> GPU(column) bandwidth (GB/s)
+           0
+ 0     19.12
+
+SUM all_to_host_bidirectional_memcpy_sm 19.12
+
+Running host_to_all_memcpy_sm.
+memcpy SM CPU(row) -> GPU(column) bandwidth (GB/s)
+           0
+ 0     24.43
+
+SUM host_to_all_memcpy_sm 24.43
+
+Running host_to_all_bidirectional_memcpy_sm.
+memcpy SM CPU(row) <-> GPU(column) bandwidth (GB/s)
+           0
+ 0     19.10
+
+SUM host_to_all_bidirectional_memcpy_sm 19.10
+
+Waived: 
+Waived: 
+Waived: 
+Waived: 
+Running host_device_latency_sm.
+memory latency SM CPU(row) <-> GPU(column) (ns)
+           0
+ 0   1027.48
+
+SUM host_device_latency_sm 1027.48
+
+Waived: 
+Running device_local_copy.
+memcpy local GPU(column) bandwidth (GB/s)
+           0
+ 0     25.51
+
+SUM device_local_copy 25.51
+
+NOTE: The reported results may not reflect the full capabilities of the platform.
+Performance can vary with software drivers, hardware clocks, and system topology.
+
