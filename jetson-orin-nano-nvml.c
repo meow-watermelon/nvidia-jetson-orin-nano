@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+ * gcc -I/usr/local/cuda-12.6/targets/aarch64-linux/include -L /usr/local/cuda-12.6/targets/aarch64-linux/lib/stubs jetson-orin-nano-nvml.c -o jetson-orin-nano-nvml -lnvidia-ml
+*/
+
 static int get_device_count(unsigned int *device_count_ptr) {
     nvmlReturn_t result;
 
